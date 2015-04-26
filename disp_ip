@@ -1,0 +1,21 @@
+#!/bin/bash
+insmod /root/zed_leds.ko
+my_ip_addr="$(ifconfig | grep -m 1 "inet addr" | sed 's/.*inet addr:\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/')"
+my_ip_addr1="$(echo $my_ip_addr | sed 's/^\([0-9]*\).*/\1/')"
+my_ip_addr2="$(echo $my_ip_addr | sed 's/^[0-9]*\.\([0-9]*\).*/\1/')"
+my_ip_addr3="$(echo $my_ip_addr | sed 's/^[0-9]*\.[0-9]*\.\([0-9]*\).*/\1/')"
+my_ip_addr4="$(echo $my_ip_addr | sed 's/^[0-9]*\.[0-9]*\.[0-9]*\.\([0-9]*\).*/\1/')"
+
+for i in `seq 1 10`; do
+	printf "0x%x" `echo $my_ip_addr1` > /sys/kernel/ece453_leds/write
+	sleep 2
+
+	printf "0x%x" `echo $my_ip_addr2` > /sys/kernel/ece453_leds/write
+	sleep 2
+
+	printf "0x%x" `echo $my_ip_addr3` > /sys/kernel/ece453_leds/write
+	sleep 2
+
+	printf "0x%x" `echo $my_ip_addr4` > /sys/kernel/ece453_leds/write
+	sleep 2
+done

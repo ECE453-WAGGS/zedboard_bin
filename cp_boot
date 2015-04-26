@@ -1,0 +1,10 @@
+#!/bin/bash
+mount /dev/mmcblk0p1 /mnt
+echo "Copy modified BOOT partition file(s) to /mnt"
+echo "Gun_SW/images/BOOT.BIN"
+echo "linux-digilent/devicetree.dtb"
+echo "arch/arm/boot/zImage"
+echo -n "Type any key and hit enter once finished"
+read foo
+umount /mnt
+reboot
