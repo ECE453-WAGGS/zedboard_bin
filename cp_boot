@@ -1,9 +1,6 @@
 #!/bin/bash
 mount /dev/mmcblk0p1 /mnt
-echo "Copy modified BOOT partition file(s) to /mnt"
-echo "zedboard/images/BOOT.BIN"
-echo "linux-digilent/devicetree.dtb"
-echo "linux-digilient/arch/arm/boot/zImage"
+echo "Run scp_boot_zed on the VM and follow the prompts in order to copy modified BOOT partition file(s) to /mnt"
 echo -n "Type any key and hit enter once finished"
 read foo
 umount /mnt
