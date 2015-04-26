@@ -6,6 +6,10 @@ my_ip_addr2="$(echo $my_ip_addr | sed 's/^[0-9]*\.\([0-9]*\).*/\1/')"
 my_ip_addr3="$(echo $my_ip_addr | sed 's/^[0-9]*\.[0-9]*\.\([0-9]*\).*/\1/')"
 my_ip_addr4="$(echo $my_ip_addr | sed 's/^[0-9]*\.[0-9]*\.[0-9]*\.\([0-9]*\).*/\1/')"
 
+if [ ! -f /root/boot_disp_ip ]; then
+
+touch /root/boot_disp_ip
+
 for i in `seq 1 10`; do
 	printf "0x%x" `echo $my_ip_addr1` > /sys/kernel/ece453_leds/write
 	sleep 2
@@ -19,3 +23,7 @@ for i in `seq 1 10`; do
 	printf "0x%x" `echo $my_ip_addr4` > /sys/kernel/ece453_leds/write
 	sleep 2
 done
+
+rm /root/boot_disp_ip
+
+fi
